@@ -1,0 +1,31 @@
+# MATLAB Generated Files
+*.asv
+*.mex*
+*.slxc
+
+# Large Data Files (Ignore to save space)
+# ProcessedData ve ModelData büyük olduğu için ignore ediyoruz
+MatlabProject/ProcessedData/*.mat
+MatlabProject/ModelData/Train/*.mat
+MatlabProject/ModelData/Test/*.mat
+MatlabProject/Checkpoints/*.mat
+
+# Dataset (Orijinal ham veri - 125 hasta, çok büyük)
+dataset/
+
+# OS Files
+.DS_Store
+Thumbs.db
+*~
+
+# MATLAB Temporary
+*.m~
+
+# Keep these important files (exception to *.mat rule)
+# Eğitilmiş model dosyasını saklayalım (küçükse)
+!MatlabProject/ModelData/Trained_Transformer_Final.mat
+
+# Git will track:
+# - All .m scripts
+# - .csv files (academic_selection_matrix.csv etc.)
+# - README and documentation
