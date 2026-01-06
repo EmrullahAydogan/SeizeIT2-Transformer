@@ -1,24 +1,31 @@
-# MATLAB files
+# MATLAB Generated Files
 *.asv
 *.autosave
+*.mex*
+*.slxc
 *.m~
 
-# Large data files (EEG/ECG/EMG data)
+# Large Data Files (Ignore to save space)
 Data/RawData/*.mat
 Data/RawData/*.edf
 Data/ProcessedData/*.mat
 Data/ModelData/Train/*.mat
 Data/ModelData/Validation/*.mat
 Data/ModelData/Test/*.mat
-
-# Trained models (too large for GitHub)
 Data/ModelData/Models/*.mat
+
+# Dataset (Original raw data - too large)
+dataset/
+
+# Checkpoints (large model files)
+MatlabProject/Checkpoints/*.mat
+Results/Archive_*/Checkpoints/*.mat
 
 # Log files
 *.log
 nohup.out
 
-# Results and checkpoints
+# Results and temporary outputs
 Results/BayesianOpt_AutoTrain/
 *.png
 *.jpg
@@ -27,12 +34,13 @@ Results/BayesianOpt_AutoTrain/
 # Temporary files
 *.tmp
 *~
+
+# OS Files
 .DS_Store
+Thumbs.db
 
 # MATLAB cache
-*.mex*
 slprj/
-*.slxc
 
 # Python cache
 __pycache__/
@@ -43,3 +51,14 @@ __pycache__/
 *_backup*
 *_old*
 *.bak
+
+# Keep important trained model (exception to *.mat rule)
+# Uncomment if you want to track the final trained model
+# !Data/ModelData/Models/Trained_Transformer_Final.mat
+
+# Git will track:
+# - All .m scripts
+# - .csv files
+# - README and documentation
+# - Configuration files
+# - Small result files

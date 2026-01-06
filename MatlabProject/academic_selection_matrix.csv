@@ -1,0 +1,126 @@
+SubjectID,Duration_Hours,SeizureCount,Seizures_Per_Hour,HasMOV,Vigilance,Lateralization,DominantType
+sub-001,18.1441666666667,4,0.220456528728241,1,MIXED (Best),Unspecified,sz_foc_a_m_automatisms
+sub-002,3.16111111111111,15,4.74516695957821,1,MIXED (Best),Unspecified,sz_foc_ia_m_hyperkinetic
+sub-003,17.8927777777778,1,0.0558884714503058,1,Wake Only,Unspecified,sz_foc_ia_m_hyperkinetic
+sub-004,18.5,4,0.216216216216216,1,MIXED (Best),Unspecified,sz_foc_a_nm
+sub-005,17.0219444444444,2,0.117495389937825,1,Wake Only,Unspecified,sz_foc_a_nm
+sub-006,7.26638888888889,1,0.137619939600138,1,Wake Only,Unspecified,sz_foc_ia_m_automatisms
+sub-007,19.4047222222222,2,0.10306769543496,1,MIXED (Best),Unspecified,sz_foc_ia_nm
+sub-008,2.93333333333333,2,0.681818181818182,1,Wake Only,Unspecified,sz_foc_ia_m_tonic
+sub-009,20.1922222222222,1,0.0495240191492874,1,Wake Only,Unspecified,sz_foc_ia_m_tonic
+sub-010,4.55388888888889,1,0.219592533853849,1,Wake Only,Unspecified,sz_foc_ia_nm
+sub-011,17.8936111111111,4,0.223543474548644,1,Wake Only,Unspecified,sz_foc_ia_m_automatisms
+sub-012,20.0475,3,0.149644594089039,1,Wake Only,Unspecified,sz_foc_a_m_automatisms
+sub-013,19.2744444444444,2,0.103764339655272,1,Wake Only,Unspecified,sz_foc_ia_nm
+sub-014,22.5766666666667,2,0.0885870367636203,1,Wake Only,Unspecified,sz_foc_ia
+sub-015,20.8913888888889,9,0.430799505378346,1,MIXED (Best),Unspecified,sz_foc_ia_m_tonic
+sub-016,20.7183333333333,2,0.0965328613948998,1,Wake Only,Unspecified,sz_foc_f2b
+sub-017,6.11861111111111,1,0.163435783356789,1,Wake Only,Unspecified,sz_foc_f2b
+sub-018,20.9352777777778,1,0.0477662637493863,1,Wake Only,Unspecified,sz_foc_ia_m_automatisms
+sub-019,21.2355555555556,1,0.0470908329845123,1,Wake Only,Unspecified,sz_foc_f2b
+sub-020,19.9544444444444,1,0.0501141488947046,1,Wake Only,Unspecified,sz_foc_ia_nm
+sub-021,3.8025,4,1.05193951347797,1,MIXED (Best),Unspecified,sz_foc_ia_m_hyperkinetic
+sub-022,21.4705555555556,7,0.326027893497555,1,MIXED (Best),Unspecified,sz_foc_ia_m_automatisms
+sub-023,20.1441666666667,1,0.0496421627435569,1,Wake Only,Unspecified,sz_foc_f2b
+sub-024,21.6033333333333,2,0.0925783058170036,1,MIXED (Best),Unspecified,sz_foc_f2b
+sub-025,19.49,3,0.153925089789636,1,MIXED (Best),Unspecified,sz_foc_a_m_hyperkinetic
+sub-026,0.765833333333333,4,5.22306855277476,1,Wake Only,Unspecified,sz_foc_ia_m_automatisms
+sub-027,19.7880555555556,1,0.0505355363083791,1,Sleep Only,Unspecified,sz_foc_f2b
+sub-028,1.65388888888889,4,2.41854215653342,1,MIXED (Best),Unspecified,sz_foc_ia_m_automatisms
+sub-029,17.8344444444444,4,0.224285091271572,1,Sleep Only,Unspecified,sz_foc_ua_nm_behavior
+sub-030,21.3072222222222,7,0.328527103486038,1,MIXED (Best),Unspecified,sz_foc_a_nm
+sub-031,2.74944444444444,0,0,1,No Seizure,No Seizure,Error Reading
+sub-032,9.27194444444445,1,0.107852242427874,1,Wake Only,Unspecified,sz_foc_f2b
+sub-033,7.46638888888889,1,0.133933554075672,1,Wake Only,Unspecified,sz_foc_ia_m_hyperkinetic
+sub-034,1.65666666666667,30,18.1086519114688,1,MIXED (Best),Unspecified,sz_foc_ia_m_hyperkinetic
+sub-035,2.60222222222222,55,21.135781383433,1,Sleep Only,Unspecified,sz_foc_a_m_hyperkinetic
+sub-036,20.0988888888889,3,0.149261982420255,1,Sleep Only,Unspecified,sz_foc_ia_m_hyperkinetic
+sub-037,21.1302777777778,2,0.0946509090431056,1,Wake Only,Unspecified,sz_foc_ua_m_automatisms
+sub-038,22.1616666666667,1,0.0451229600661803,1,Sleep Only,Unspecified,sz_foc_ia_m_clonic
+sub-039,20.5755555555556,75,3.64510206285776,1,MIXED (Best),Unspecified,sz_foc_a_m_hyperkinetic
+sub-040,5.76,3,0.520833333333333,1,Wake Only,Unspecified,sz_foc_ia_m_tonic
+sub-041,20.9822222222222,2,0.0953187883922898,1,Wake Only,Unspecified,sz_foc_ua_nm_behavior
+sub-042,4.37027777777778,11,2.51700247886608,1,MIXED (Best),Unspecified,sz_foc_ua_nm
+sub-043,3.39305555555556,5,1.47359803520262,1,Wake Only,Unspecified,sz_foc_ia
+sub-044,19.5447222222222,4,0.204658830886429,1,MIXED (Best),Unspecified,sz_foc_ua_nm_behavior
+sub-045,20.4530555555556,2,0.0977849003816327,1,Wake Only,Unspecified,sz_foc_ia_m_automatisms
+sub-046,18.2894444444444,4,0.218705385620121,1,MIXED (Best),Unspecified,sz_foc_f2b
+sub-047,1.92861111111111,64,33.1845023764943,1,MIXED (Best),Unspecified,sz_foc_ia_nm
+sub-048,9.44222222222222,1,0.105907272299365,0,Sleep Only,Unspecified,sz_foc_a_um
+sub-049,11.21,1,0.0892060660124888,1,Wake Only,Unspecified,sz_foc_f2b
+sub-050,13.0758333333333,3,0.229430883946211,1,Wake Only,Unspecified,sz_foc_ia_m_hyperkinetic
+sub-051,13.2455555555556,5,0.377485110309538,1,MIXED (Best),Unspecified,sz_foc_ua_m
+sub-052,9.00916666666667,9,0.998982517805938,1,Wake Only,Unspecified,sz_foc_a_nm
+sub-053,7.375,2,0.271186440677966,1,Wake Only,Unspecified,sz_foc_a_m_hyperkinetic
+sub-054,8.92916666666667,1,0.111992533831078,1,Wake Only,Unspecified,sz_foc_f2b
+sub-055,12.5552777777778,8,0.6371822385451,1,Sleep Only,Unspecified,sz_foc_ua_nm
+sub-056,9.07666666666667,13,1.43224384869629,1,MIXED (Best),Unspecified,sz_foc_ia_m_hyperkinetic
+sub-057,4.80055555555556,1,0.208309223469506,1,Sleep Only,Unspecified,sz_foc_ia_m_hyperkinetic
+sub-058,10.1688888888889,1,0.0983391608391608,1,Sleep Only,Unspecified,sz_foc_f2b
+sub-059,9.20361111111111,8,0.869224036459119,1,Sleep Only,Unspecified,sz_foc_ua_m_hyperkinetic
+sub-060,6.53583333333333,25,3.82506693867143,1,MIXED (Best),Unspecified,sz_foc_a_nm
+sub-061,9.04861111111111,1,0.110514198004605,1,Wake Only,Unspecified,sz_foc_ia_um
+sub-062,9.92833333333333,3,0.302165519556824,1,Sleep Only,Unspecified,sz_foc_ua_nm
+sub-063,11.5002777777778,2,0.173908842781575,1,MIXED (Best),Unspecified,sz_foc_a_nm
+sub-064,9.50861111111111,3,0.315503490987701,1,Wake Only,Unspecified,sz_foc_a_nm
+sub-065,4.13361111111111,2,0.483838451716955,1,Wake Only,Unspecified,sz_foc_ia
+sub-066,0.581944444444444,4,6.87350835322196,1,Wake Only,Unspecified,sz_foc_ia_m_automatisms
+sub-067,6.21416666666667,4,0.643690492155022,1,Unknown,Unspecified,sz_foc_ia_m_hyperkinetic
+sub-068,6.31694444444444,3,0.474913152455917,1,Unknown,Unspecified,sz_foc_f2b
+sub-069,5.81833333333333,1,0.171870524205099,1,Sleep Only,Unspecified,sz_foc_f2b
+sub-070,5.81527777777778,2,0.343921662288034,1,MIXED (Best),Unspecified,sz_foc_f2b
+sub-071,1.89722222222222,6,3.16251830161054,1,Wake Only,Unspecified,sz_foc_ia
+sub-072,5.83305555555556,20,3.42873470165246,1,MIXED (Best),Unspecified,sz_foc_ia_nm
+sub-073,5.9825,75,12.5365649811952,1,MIXED (Best),Unspecified,sz_foc_a_m_hyperkinetic
+sub-074,1.46583333333333,9,6.1398521887436,1,MIXED (Best),Unspecified,sz_foc_ia_m_tonic
+sub-075,5.98972222222222,2,0.333905300746649,1,Wake Only,Unspecified,sz_foc_a_um
+sub-076,0.540277777777778,3,5.55269922879177,1,Wake Only,Unspecified,sz_foc_ia_nm
+sub-077,5.98111111111111,9,1.50473713542634,1,Wake Only,Unspecified,sz_foc_a_nm
+sub-078,2.22472222222222,1,0.449494318891247,1,Wake Only,Unspecified,sz_foc_f2b
+sub-079,5.83194444444444,15,2.57204096213384,1,Wake Only,Unspecified,sz_foc_ia_nm
+sub-080,5.82166666666667,8,1.37417692527913,1,Wake Only,Unspecified,sz_foc_ia_m_automatisms
+sub-081,0.934166666666667,4,4.28189116859946,0,Unknown,Unspecified,sz_foc_ia
+sub-082,0.731944444444444,4,5.46489563567362,0,Sleep Only,Unspecified,sz_foc_ua_um
+sub-083,0.988055555555556,1,1.01208883890919,1,Sleep Only,Unspecified,sz_foc_f2b
+sub-084,0.988055555555556,4,4.04835535563677,1,Wake Only,Unspecified,sz_foc_ia_m_automatisms
+sub-085,0.246944444444444,3,12.14848143982,1,Wake Only,Unspecified,sz_foc_ia_m_automatisms
+sub-086,0.987777777777778,4,4.04949381327334,1,Wake Only,Unspecified,sz_foc_ia_m_tonic
+sub-087,0.957777777777778,42,43.8515081206497,0,Unknown,Unspecified,sz_foc_a_nm_behavior
+sub-088,0.978888888888889,1,1.02156640181612,1,Unknown,Unspecified,sz_foc_ia_m_hyperkinetic
+sub-089,0.902777777777778,5,5.53846153846154,1,Wake Only,Unspecified,sz_foc_ia_m_hyperkinetic
+sub-090,1.18277777777778,4,3.38186942226397,0,Wake Only,Unspecified,sz_foc_a_nm_behavior
+sub-091,0.216111111111111,5,23.1362467866324,0,Unknown,Unspecified,sz_foc_ia_um
+sub-092,0.979722222222222,6,6.1241848596541,1,Unknown,Unspecified,sz_foc_ia_m_hyperkinetic
+sub-093,0.985277777777778,1,1.01494220468001,1,Unknown,Unspecified,sz_foc_f2b
+sub-094,0.461944444444444,3,6.49428743235117,1,Unknown,Unspecified,sz_foc_ia_m_automatisms
+sub-095,0.983055555555556,1,1.01723650748799,1,Unknown,Unspecified,sz_foc_ia
+sub-096,0.976944444444444,1,1.02359965880011,1,Unknown,Unspecified,sz_foc_f2b
+sub-097,2.06833333333333,13,6.28525382755842,1,MIXED (Best),Unspecified,sz_foc_ua_m_hyperkinetic
+sub-098,20.6577777777778,1,0.048407917383821,1,Sleep Only,Unspecified,sz_foc_f2b
+sub-099,21.0602777777778,4,0.189931018109395,1,MIXED (Best),Unspecified,sz_foc_ia_m_automatisms
+sub-100,21.2961111111111,2,0.0939138601205228,1,Wake Only,Unspecified,sz_foc_ia_m_automatisms
+sub-101,21.755,7,0.321765111468628,1,Wake Only,Unspecified,sz_foc_ia_nm
+sub-102,21.3077777777778,3,0.140793659070762,1,Wake Only,Unspecified,sz_foc_ia_nm
+sub-103,18.3533333333333,15,0.817290228841264,1,MIXED (Best),Unspecified,sz_foc_a_m_hyperkinetic
+sub-104,19.4363888888889,2,0.102899772763002,1,Wake Only,Unspecified,sz_foc_ia_m_automatisms
+sub-105,20.6411111111111,2,0.0968940087204608,1,Sleep Only,Unspecified,sz_foc_ia_m_hyperkinetic
+sub-106,5.1325,2,0.389673648319532,1,Wake Only,Unspecified,sz_foc_ia_m_automatisms
+sub-107,1.91444444444444,2,1.04468949506674,1,MIXED (Best),Unspecified,sz_foc_ia_m_automatisms
+sub-108,20.7638888888889,2,0.0963210702341137,1,Wake Only,Unspecified,sz_foc_ua_nm
+sub-109,19.7686111111111,37,1.87165399693678,1,Sleep Only,Unspecified,sz_foc_ia_nm
+sub-110,5.11805555555556,2,0.390773405698779,1,Sleep Only,Unspecified,sz_foc_f2b
+sub-111,12.8513888888889,2,0.155625202636983,1,MIXED (Best),Unspecified,sz_foc_a_nm
+sub-112,9.85138888888889,7,0.710559706753137,1,MIXED (Best),Unspecified,sz_foc_ia_m_hyperkinetic
+sub-113,3.78888888888889,10,2.63929618768328,1,Wake Only,Unspecified,sz_foc_a_um
+sub-114,10.7166666666667,4,0.373250388802488,1,Wake Only,Unspecified,sz_foc_a_um
+sub-115,4.22111111111111,7,1.65833113977362,1,MIXED (Best),Unspecified,sz_foc_f2b
+sub-116,1.59805555555556,7,4.38032330957761,1,MIXED (Best),Unspecified,sz_foc_f2b
+sub-117,5.79166666666667,11,1.89928057553957,1,Sleep Only,Unspecified,sz_foc_a_nm
+sub-118,5.83277777777778,2,0.342889799028479,1,Wake Only,Unspecified,sz_foc_ia_m_automatisms
+sub-119,5.81694444444444,14,2.40676185473473,1,Wake Only,Unspecified,sz_foc_ia_nm
+sub-120,0.989166666666667,10,10.1095197978096,0,Wake Only,Unspecified,sz_foc_ia
+sub-121,0.975833333333333,4,4.09906063193851,0,Wake Only,Unspecified,sz_foc_f2b
+sub-122,0.988333333333333,4,4.04721753794266,1,Wake Only,Unspecified,sz_foc_ia_m_automatisms
+sub-123,0.984166666666667,2,2.03217612193057,1,Wake Only,Unspecified,sz_foc_ia_m_automatisms
+sub-124,0.818888888888889,1,1.22116689280868,1,Wake Only,Unspecified,sz_foc_f2b
+sub-125,0.983888888888889,2,2.03274985883682,1,Wake Only,Unspecified,sz_foc_f2b
