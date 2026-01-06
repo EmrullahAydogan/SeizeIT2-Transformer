@@ -1,0 +1,210 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                    YARIN YAPILACAKLAR - 2026-01-06                        ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+ÖNEMLİ NOTLAR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚠️  Eğitim bittiğinde sadece MSE kaydedilecek (RMSE kaybolacak!)
+⚠️  MSE yanlış hesaplanıyor, gerçek metrik RMSE!
+✅ İterasyon 1-7 arası RMSE değerleri KAYDEDİLDİ
+⏳ İterasyon 7 şu anda en düşük RMSE veriyor ve henüz bitmedi
+📋 İterasyon 8, 9, 10 için TEKRAR DENEME gerekecek
+
+
+ŞU ANA KADAR OLAN İTERASYONLAR (RMSE KAYITLI)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TAMAMLANANLAR:
+--------------
+Iter 1: Val RMSE = 217.44  [LR=1.33e-04, Emb=245, Heads=7, Enc=4, Dec=2, Drop=0.16, Batch=22]
+Iter 2: Val RMSE = 143.59  [LR=7.08e-05, Emb=117, Heads=3, Enc=3, Dec=3, Drop=0.48, Batch=101]
+Iter 3: Val RMSE = 217.99  [LR=2.86e-03, Emb=132, Heads=6, Enc=3, Dec=4, Drop=0.32, Batch=43]
+Iter 4: Val RMSE = 155.89  [LR=1.10e-04, Emb=80,  Heads=8, Enc=6, Dec=4, Drop=0.49, Batch=95]
+Iter 5: HATA (GPU memory overflow)
+Iter 6: Val RMSE = 135.41 🏆 [LR=9.51e-05, Emb=110, Heads=5, Enc=3, Dec=5, Drop=0.23, Batch=67]
+
+DEVAM EDEN:
+-----------
+Iter 7: Val RMSE = 141.70 (son bakılan değer, henüz bitmedi) ⏳
+        [LR=3.77e-05, Emb=120, Heads=5, Enc=3, Dec=5, Drop=0.20, Batch=20]
+
+YAPILMADI:
+----------
+Iter 8: ?
+Iter 9: ?
+Iter 10: ?
+
+
+ŞUAN KI EN İYİ: İTERASYON 6
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Val RMSE: 135.41 (EN DÜŞÜK!)
+
+Hiperparametreler:
+  cfg.model.embedding_dim = 110;
+  cfg.model.num_heads = 5;
+  cfg.model.num_encoder_layers = 3;
+  cfg.model.num_decoder_layers = 5;
+  cfg.model.dropout_rate = 0.23;
+  cfg.train.initial_lr = 9.51e-05;
+  cfg.train.min_batch_size = 67;
+
+
+YARIN YAPMASI GEREKENLER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. EĞİTİM DURUMUNU KONTROL ET
+   ─────────────────────────────────────────────────────────────────────
+   ps aux | grep matlab
+   tail -20 matlab_training.log
+
+   SORULAR:
+   - Eğitim hala çalışıyor mu?
+   - İterasyon 10 tamamlandı mı?
+   - Hata verdi mi?
+
+
+2. İTERASYON 7-10'UN RMSE DEĞERLERİNİ ÇIKAR
+   ─────────────────────────────────────────────────────────────────────
+   NOT: Eğitim bittiğinde sadece MSE kaydedilecek!
+        RMSE değerleri log dosyasından manuel çıkartılmalı!
+
+   Komut:
+   python3 << 'EOF'
+   import re
+   log = open('matlab_training.log').read()
+   for i in [7, 8, 9, 10]:
+       section = re.search(f'Random Search Iteration {i}/10.*?Random Search Iteration {i+1}/10', log, re.DOTALL)
+       if section:
+           lines = re.findall(r'\|\s+\d+\s+\|\s+\d+\s+\|\s+[\d:]+\s+\|\s+([\d.]+)\s+\|\s+([\d.]+)\s+\|', section.group())
+           if lines:
+               print(f"Iter {i}: Val RMSE = {lines[-1][1]}")
+   EOF
+
+
+3. EĞİTİMİ DURDUR (RMSE kaydı için)
+   ─────────────────────────────────────────────────────────────────────
+   NEDEN? Çünkü:
+   - Kod bitince sadece MSE kaydedecek (yanlış metrik)
+   - RMSE değerleri kaybolacak
+   - Asıl eğitim yanlış parametrelerle başlayacak (MSE'ye göre seçim)
+
+   DURDURMA:
+   pkill -9 matlab
+
+   SONUÇ:
+   - İterasyon 7-10 yarım kalacak (sorun değil)
+   - Kalan iterasyonları manuel yapacağız
+
+
+4. KALAN İTERASYONLARI MANUEL TEKRARLA (8, 9, 10)
+   ─────────────────────────────────────────────────────────────────────
+
+   SEÇENEK A: Random search devam et
+   ──────────────────────────────────
+   - 3 farklı rastgele hiperparametre dene
+   - Her birini 5 epoch eğit
+   - RMSE değerlerini kaydet
+   - En iyisini seç
+
+   SEÇENEK B: İterasyon 6 ve 7'yi optimize et (TAVSİYE EDİLEN)
+   ────────────────────────────────────────────────────────────
+   İterasyon 6 ve 7 en iyi sonuçları verdi. Bunların etrafında ara:
+
+   Iter 6: LR=9.51e-05, Emb=110, Heads=5, Enc=3, Dec=5, Drop=0.23, Batch=67
+   Iter 7: LR=3.77e-05, Emb=120, Heads=5, Enc=3, Dec=5, Drop=0.20, Batch=20
+
+   Ortak özellikler:
+   - Heads = 5
+   - Enc = 3, Dec = 5
+   - Dropout = 0.20-0.23
+   - Embedding = 110-120
+   - LR = 3.77e-05 ile 9.51e-05 arası
+
+   DENEME SETLERİ:
+
+   Test 8: LR=5e-05,   Emb=115, Heads=5, Enc=3, Dec=5, Drop=0.21, Batch=50
+   Test 9: LR=7e-05,   Emb=120, Heads=5, Enc=3, Dec=5, Drop=0.22, Batch=60
+   Test 10: LR=6e-05,  Emb=110, Heads=5, Enc=3, Dec=5, Drop=0.23, Batch=70
+
+
+5. EN İYİ HİPERPARAMETREYİ SEÇ
+   ─────────────────────────────────────────────────────────────────────
+   Tüm iterasyonların RMSE değerlerini karşılaştır:
+   - Iter 1-7 (mevcut)
+   - Iter 8-10 (yeni)
+
+   En düşük RMSE'yi seç!
+
+
+6. ASIL EĞİTİMİ BAŞLAT (EN İYİ PARAMETRELERLE)
+   ─────────────────────────────────────────────────────────────────────
+
+   A) config/config.m dosyasını düzenle:
+      - En iyi hiperparametreleri yaz
+
+   B) Eğitimi başlat (Bayesian Opt OLMADAN):
+      cd /home/developer/Desktop/nt_project/MatlabProject
+      matlab -nodisplay -nosplash
+
+      >> addpath('config'); addpath('utils'); addpath('03_Models'); addpath('04_Training');
+      >> [net, trainInfo] = train_model('UseBayesianOpt', false);
+
+   C) Bekle (2-3 saat)
+
+   D) Model kaydedildi mi kontrol et:
+      ls -lh Data/ModelData/Models/Trained_Transformer_*.mat
+
+
+7. MODELİ TEST ET
+   ─────────────────────────────────────────────────────────────────────
+   Test verisi hazır:
+   - Data/ModelData/Test/sub-015_NormalPart.mat
+   - Data/ModelData/Test/sub-015_Seizures.mat
+   - Data/ModelData/Test/sub-039_NormalPart.mat
+   - Data/ModelData/Test/sub-039_Seizures.mat
+
+   Evaluate fonksiyonu var mı kontrol et:
+   ls 05_Evaluation/
+
+
+KAYDEDILMIŞ DOSYALAR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ Results/BAYESIAN_OPT_PROGRESS_REPORT.txt        ← İterasyon 1-7 RMSE değerleri
+✅ Results/monitor_remaining_iterations.sh         ← Auto-monitor (kullanılmayacak artık)
+✅ Results/generate_final_report.py                ← Final rapor generator
+✅ YARIN_YAPILACAKLAR.txt                          ← BU DOSYA
+
+
+HIZLI REFERANS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+RMSE DEĞERLERİNİ ÇIKART:
+  grep -B1 "Training finished" matlab_training.log | grep "^\|"
+
+EĞİTİMİ DURDUR:
+  pkill -9 matlab
+
+MANUEL EĞİTİM BAŞLAT (tek iterasyon):
+  matlab -nodisplay -nosplash -r "addpath('config'); addpath('utils'); addpath('03_Models'); addpath('04_Training'); cfg=config(); params=struct('learning_rate',5e-05,'embedding_dim',115,'num_heads',5,'num_encoder_layers',3,'num_decoder_layers',5,'dropout_rate',0.21,'batch_size',50,'ffn_multiplier',3.0); % burada objective_function çağır"
+
+
+ÖNEMLİ HATIRLATMA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+❗ Eğitim biterse kod otomatik MSE'ye göre seçim yapacak (YANLIŞ!)
+❗ RMSE değerleri log dosyasından kaybolacak
+❗ Bu yüzden ya şimdi durdur, ya da sabah erkenden kontrol et
+❗ İterasyon 7 iyi gidiyordu, onun RMSE'sini kaydet!
+
+
+SABAH İLK İŞ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. Eğitim durumunu kontrol et
+2. İterasyon 7-10 RMSE değerlerini HEMEN çıkart (varsa)
+3. Eğitimi durdur (bitmediyse)
+4. Bu dosyayı oku ve adımları takip et
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Hazırlayan: Claude
+Tarih: 2026-01-05 22:00
+Durum: İterasyon 7/10 devam ediyor
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

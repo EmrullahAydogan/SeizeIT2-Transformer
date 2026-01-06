@@ -1,0 +1,17 @@
+{
+  "best_params": {
+    "learning_rate": 0.00013292918943162154,
+    "embedding_dim": 245,
+    "num_heads": 7,
+    "num_encoder_layers": 4,
+    "num_decoder_layers": 2,
+    "dropout_rate": 0.16239780813448107,
+    "batch_size": 22,
+    "ffn_multiplier": 3.5985284373248057,
+    "objective": null,
+    "feedforward_dim": 882
+  },
+  "optimization_time": "2026-01-04_21-30-08",
+  "objective_value": null,
+  "num_evaluations": 5
+}

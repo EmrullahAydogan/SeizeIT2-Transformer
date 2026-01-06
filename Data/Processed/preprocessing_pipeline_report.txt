@@ -1,0 +1,56 @@
+===============================================
+SEIZEIT2 - PREPROCESSING PIPELINE REPORT
+===============================================
+Generated: 2026-01-04 18:10:47
+Pipeline version: 2.0.0 (Academic)
+Git commit: unknown
+MATLAB version: 25.2.0.3055257 (R2025b) Update 2
+
+--- CONFIGURATION SUMMARY ---
+Selected patients: sub-039, sub-015, sub-022
+Target sampling frequency: 250 Hz
+Window size: 4.0 seconds (1000 samples)
+Stride: 2.0 seconds (500 samples)
+Seizure threshold: 20.0% of window
+Test ratio (normal data): 20.0%
+
+--- PROCESSING SUMMARY ---
+Patients processed: 3/3
+Total windows created: 113759
+  - Training windows: 98281 (86.4%)
+  - Test windows: 15478 (13.6%)
+  - Seizure windows: 570 (0.5%)
+  - Normal windows: 113189
+Class imbalance ratio (Normal:Seizure): 198.6:1
+Total processing time: 10.4 minutes
+
+--- DATA QUALITY METRICS ---
+
+Patient: sub-039
+  Duration: 20.6 hours
+  Channels: 16
+  SNR: 12.1 ± 9.7 dB
+  Artifact ratio: 7.7% ± 7.1%
+  Missing data: 0.0%
+  Seizure samples: 29512 (0.2%)
+
+Patient: sub-015
+  Duration: 20.9 hours
+  Channels: 16
+  SNR: 23.3 ± 46.0 dB
+  Artifact ratio: 11.4% ± 11.2%
+  Missing data: 0.0%
+  Seizure samples: 9001 (0.0%)
+
+Patient: sub-022
+  Duration: 21.5 hours
+  Channels: 16
+  SNR: 38.6 ± 47.4 dB
+  Artifact ratio: 15.2% ± 14.8%
+  Missing data: 0.0%
+  Seizure samples: 0 (0.0%)
+
+--- REPRODUCIBILITY INFORMATION ---
+Random seed: 42
+Config hash: D99778C5
+Pipeline start: 2026-01-04_18-00-24

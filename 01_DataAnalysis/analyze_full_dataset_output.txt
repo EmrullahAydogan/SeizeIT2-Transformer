@@ -1,0 +1,212 @@
+Configuration loaded successfully.
+Project: SeizeIT2-Transformer v2.0.0
+Base path: /home/developer/Desktop/nt_project/MatlabProject
+=== COMPREHENSIVE DATASET ANALYSIS ===
+SeizeIT2: 125 Patients with Focal Epilepsy
+Analysis goal: Select optimal subset for transformer-based seizure detection
+
+Discovering patients...
+Found 125 patients
+
+Loading demographic data...
+  Loaded demographic data for 125 participants
+Analyzing patients (this may take several minutes)...
+
+=== STATISTICAL ANALYSIS ===
+Anderson-Darling normality test for Quality Scores: p = 0.0008
+  -> Quality scores NOT normally distributed (use non-parametric tests)
+
+Mann-Whitney U test (Selected vs Unselected patients):
+  Selected (n=3): Mean = 96.67 ± 2.89
+  Unselected (n=122): Mean = 53.07 ± 17.22
+  p-value = 0.0033 **
+  Cohen's d = 2.552 (Effect size: large)
+
+Demographic Summary:
+  Sex: f=62 (49.6%) m=63 (50.4%) 
+
+✓ Saved: patient_analysis_full.csv (125 patients)
+✓ Saved: reproducibility_log.json
+
+=== PATIENT SELECTION CRITERIA ===
+Minimum Requirements:
+  - Duration ≥ 18 hours (circadian coverage)
+  - Seizures ≥ 5 (sufficient test data)
+  - All modalities present (EEG+ECG+EMG+MOV)
+  - Mixed vigilance preferred (sleep + wake seizures)
+
+Candidates meeting minimum criteria: 7
+  - With mixed vigilance (GOLD STANDARD): 5
+
+=== TOP 10 RECOMMENDATIONS (Ranked by Quality Score) ===
+    PatientID    Duration_Hours    SeizureCount    Vigilance    Lateralization    QualityScore
+    _________    ______________    ____________    _________    ______________    ____________
+
+    "sub-039"        20.576             75          "Mixed"     "Unspecified"         100     
+    "sub-015"        20.891              9          "Mixed"     "Unspecified"          95     
+    "sub-022"        21.471              7          "Mixed"     "Unspecified"          95     
+    "sub-030"        21.307              7          "Mixed"     "Unspecified"          95     
+    "sub-103"        18.353             15          "Mixed"     "Unspecified"          95     
+
+
+✓ Saved: selection_recommendations.csv
+
+Generating analysis figures...
+✓ Figures saved to: /home/developer/Desktop/nt_project/MatlabProject/Results/Figures
+
+=== SUGGESTED PATIENT SELECTION FOR PILOT STUDY ===
+Hardware constraint: RTX 4070 8GB → Maximum 3-5 patients
+
+OPTION A (Conservative - 3 patients):
+  1. sub-039: 75 seizures, 20.6h, Unspecified lateralization (Score: 100)
+  2. sub-015: 9 seizures, 20.9h, Unspecified lateralization (Score: 95)
+  3. sub-022: 7 seizures, 21.5h, Unspecified lateralization (Score: 95)
+
+OPTION B (Ambitious - 5 patients):
+  (Requires testing GPU memory limits)
+  1. sub-039: 75 seizures, 20.6h (Score: 100)
+  2. sub-015: 9 seizures, 20.9h (Score: 95)
+  3. sub-022: 7 seizures, 21.5h (Score: 95)
+  4. sub-030: 7 seizures, 21.3h (Score: 95)
+  5. sub-103: 15 seizures, 18.4h (Score: 95)
+
+=== ANALYSIS COMPLETE ===
+Next steps:
+  1. Review selection_recommendations.csv
+  2. Check generated figures in Results/Figures/
+  3. Update config.m with selected patient IDs
+  4. Proceed to preprocessing
+
+ans =
+
+  125×18 table
+
+    PatientID    Duration_Hours    SeizureCount    Seizures_Per_Hour    HasEEG    HasECG    HasEMG    HasMOV    Vigilance    Lateralization           DominantType           QualityScore    Age    Sex    EpilepsyDuration    SNR_EEG    ArtifactRatio    MissingDataRatio
+    _________    ______________    ____________    _________________    ______    ______    ______    ______    _________    ______________    __________________________    ____________    ___    ___    ________________    _______    _____________    ________________
+
+    "sub-039"        20.576             75               3.6451         true      true      true      true      "Mixed"      "Unspecified"     "sz_foc_a_m_hyperkinetic"         100         NaN    "m"          NaN           20.466        10.662             2.8583     
+    "sub-015"        20.891              9               0.4308         true      true      true      true      "Mixed"      "Unspecified"     "sz_foc_ia_m_tonic"                95         NaN    "f"          NaN           11.181        16.107            0.62625     
+    "sub-022"        21.471              7              0.32603         true      true      true      true      "Mixed"      "Unspecified"     "sz_foc_ia_m_automatisms"          95         NaN    "f"          NaN           9.5208        11.479             1.8824     
+    "sub-030"        21.307              7              0.32853         true      true      true      true      "Mixed"      "Unspecified"     "sz_foc_a_nm"                      95         NaN    "f"          NaN           14.831        11.638             1.2758     
+    "sub-103"        18.353             15              0.81729         true      true      true      true      "Mixed"      "Unspecified"     "sz_foc_a_m_hyperkinetic"          95         NaN    "m"          NaN           10.329        9.8301            0.95395     
+    "sub-099"         21.06              4              0.18993         true      true      true      true      "Mixed"      "Unspecified"     "sz_foc_ia_m_automatisms"          85         NaN    "m"          NaN           8.8366         12.63             0.3905     
+    "sub-001"        18.144              4              0.22046         true      true      true      true      "Mixed"      "Unspecified"     "sz_foc_a_m_automatisms"           80         NaN    "f"          NaN           10.927         12.79              2.456     
+    "sub-004"          18.5              4              0.21622         true      true      true      true      "Mixed"      "Unspecified"     "sz_foc_a_nm"                      80         NaN    "m"          NaN           15.955        8.1566             2.7369     
+    "sub-025"         19.49              3              0.15393         true      true      true      true      "Mixed"      "Unspecified"     "sz_foc_a_m_hyperkinetic"          80         NaN    "f"          NaN           19.799        10.977             2.1837     
+    "sub-044"        19.545              4              0.20466         true      true      true      true      "Mixed"      "Unspecified"     "sz_foc_ua_nm_behavior"            80         NaN    "f"          NaN           12.226        8.6904             2.5905     
+    "sub-046"        18.289              4              0.21871         true      true      true      true      "Mixed"      "Unspecified"     "sz_foc_f2b"                       80         NaN    "m"          NaN            15.56        10.519             2.2125     
+    "sub-101"        21.755              7              0.32177         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_ia_nm"                     80         NaN    "m"          NaN           17.112        13.584             2.7954     
+    "sub-109"        19.769             37               1.8717         true      true      true      true      "Sleep"      "Unspecified"     "sz_foc_ia_nm"                     80         NaN    "f"          NaN           18.035        8.3098            0.78303     
+    "sub-002"        3.1611             15               4.7452         true      true      true      true      "Mixed"      "Unspecified"     "sz_foc_ia_m_hyperkinetic"         75         NaN    "m"          NaN           17.512        5.4219             1.1557     
+    "sub-024"        21.603              2             0.092578         true      true      true      true      "Mixed"      "Unspecified"     "sz_foc_f2b"                       75         NaN    "m"          NaN           20.185        15.421            0.50612     
+    "sub-034"        1.6567             30               18.109         true      true      true      true      "Mixed"      "Unspecified"     "sz_foc_ia_m_hyperkinetic"         75         NaN    "m"          NaN           18.212         6.004             1.6583     
+    "sub-042"        4.3703             11                2.517         true      true      true      true      "Mixed"      "Unspecified"     "sz_foc_ua_nm"                     75         NaN    "f"          NaN           14.576        9.1421            0.12259     
+    "sub-047"        1.9286             64               33.185         true      true      true      true      "Mixed"      "Unspecified"     "sz_foc_ia_nm"                     75         NaN    "m"          NaN           12.427        7.7052            0.95814     
+    "sub-051"        13.246              5              0.37749         true      true      true      true      "Mixed"      "Unspecified"     "sz_foc_ua_m"                      75         NaN    "f"          NaN           14.579        9.5169             0.5928     
+    "sub-056"        9.0767             13               1.4322         true      true      true      true      "Mixed"      "Unspecified"     "sz_foc_ia_m_hyperkinetic"         75         NaN    "f"          NaN           7.6324        7.9861             1.7115     
+    "sub-060"        6.5358             25               3.8251         true      true      true      true      "Mixed"      "Unspecified"     "sz_foc_a_nm"                      75         NaN    "f"          NaN           12.161        6.9004             1.9581     
+    "sub-072"        5.8331             20               3.4287         true      true      true      true      "Mixed"      "Unspecified"     "sz_foc_ia_nm"                     75         NaN    "f"          NaN            14.55        6.3843             2.7072     
+    "sub-073"        5.9825             75               12.537         true      true      true      true      "Mixed"      "Unspecified"     "sz_foc_a_m_hyperkinetic"          75         NaN    "m"          NaN           21.748        5.6042             1.4242     
+    "sub-007"        19.405              2              0.10307         true      true      true      true      "Mixed"      "Unspecified"     "sz_foc_ia_nm"                     70         NaN    "f"          NaN           16.342        9.2259             1.8649     
+    "sub-012"        20.047              3              0.14964         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_a_m_automatisms"           70         NaN    "f"          NaN           25.044        15.868             1.4661     
+    "sub-036"        20.099              3              0.14926         true      true      true      true      "Sleep"      "Unspecified"     "sz_foc_ia_m_hyperkinetic"         70         NaN    "m"          NaN           17.933        10.289             1.5619     
+    "sub-074"        1.4658              9               6.1399         true      true      true      true      "Mixed"      "Unspecified"     "sz_foc_ia_m_tonic"                70         NaN    "m"          NaN           11.165        7.3166            0.88679     
+    "sub-102"        21.308              3              0.14079         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_ia_nm"                     70         NaN    "f"          NaN           15.382        12.655             1.4397     
+    "sub-112"        9.8514              7              0.71056         true      true      true      true      "Mixed"      "Unspecified"     "sz_foc_ia_m_hyperkinetic"         70         NaN    "f"          NaN           21.886        7.1852             1.7454     
+    "sub-115"        4.2211              7               1.6583         true      true      true      true      "Mixed"      "Unspecified"     "sz_foc_f2b"                       70         NaN    "m"          NaN           19.167        6.9662            0.73176     
+    "sub-116"        1.5981              7               4.3803         true      true      true      true      "Mixed"      "Unspecified"     "sz_foc_f2b"                       70         NaN    "f"          NaN           15.295        6.2176             1.7109     
+    "sub-055"        12.555              8              0.63718         true      true      true      true      "Sleep"      "Unspecified"     "sz_foc_ua_nm"                     65         NaN    "m"          NaN           18.658        4.5937             0.6606     
+    "sub-097"        2.0683             13               6.2853         true      false     false     true      "Mixed"      "Unspecified"     "sz_foc_ua_m_hyperkinetic"         65         NaN    "m"          NaN           12.111        7.8671              1.161     
+    "sub-009"        20.192              1             0.049524         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_ia_m_tonic"                60         NaN    "m"          NaN           15.623        13.071             1.8073     
+    "sub-011"        17.894              4              0.22354         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_ia_m_automatisms"          60         NaN    "f"          NaN           17.778         8.636            0.97378     
+    "sub-014"        22.577              2             0.088587         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_ia"                        60         NaN    "m"          NaN           14.552        10.785              2.089     
+    "sub-016"        20.718              2             0.096533         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_f2b"                       60         NaN    "m"          NaN           19.239         11.62             1.6813     
+    "sub-018"        20.935              1             0.047766         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_ia_m_automatisms"          60         NaN    "f"          NaN           19.084        13.842             3.1976     
+    "sub-019"        21.236              1             0.047091         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_f2b"                       60         NaN    "f"          NaN           17.816        13.241            0.46455     
+    "sub-021"        3.8025              4               1.0519         true      true      true      true      "Mixed"      "Unspecified"     "sz_foc_ia_m_hyperkinetic"         60         NaN    "f"          NaN           13.325        6.8538             1.5068     
+    "sub-023"        20.144              1             0.049642         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_f2b"                       60         NaN    "m"          NaN           12.052        14.186             1.2477     
+    "sub-028"        1.6539              4               2.4185         true      true      true      true      "Mixed"      "Unspecified"     "sz_foc_ia_m_automatisms"          60         NaN    "f"          NaN           11.678        4.5644            0.93793     
+    "sub-029"        17.834              4              0.22429         true      true      true      true      "Sleep"      "Unspecified"     "sz_foc_ua_nm_behavior"            60         NaN    "f"          NaN           19.349        11.764             2.1308     
+    "sub-035"        2.6022             55               21.136         true      true      true      true      "Sleep"      "Unspecified"     "sz_foc_a_m_hyperkinetic"          60         NaN    "f"          NaN           18.488        5.0878             1.5254     
+    "sub-037"         21.13              2             0.094651         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_ua_m_automatisms"          60         NaN    "f"          NaN           13.065        9.4375              2.147     
+    "sub-038"        22.162              1             0.045123         true      true      true      true      "Sleep"      "Unspecified"     "sz_foc_ia_m_clonic"               60         NaN    "m"          NaN           19.138         14.38             2.0993     
+    "sub-041"        20.982              2             0.095319         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_ua_nm_behavior"            60         NaN    "f"          NaN           11.739        10.726             1.5545     
+    "sub-045"        20.453              2             0.097785         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_ia_m_automatisms"          60         NaN    "f"          NaN           14.407        11.739              2.814     
+    "sub-063"          11.5              2              0.17391         true      true      true      true      "Mixed"      "Unspecified"     "sz_foc_a_nm"                      60         NaN    "m"          NaN           7.8059        4.4242             3.2024     
+    "sub-079"        5.8319             15                2.572         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_ia_nm"                     60         NaN    "f"          NaN           6.1816        7.3357             0.7948     
+    "sub-098"        20.658              1             0.048408         true      true      true      true      "Sleep"      "Unspecified"     "sz_foc_f2b"                       60         NaN    "f"          NaN           10.749        12.539             2.3903     
+    "sub-100"        21.296              2             0.093914         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_ia_m_automatisms"          60         NaN    "m"          NaN           9.5404        13.644             2.0733     
+    "sub-105"        20.641              2             0.096894         true      true      true      true      "Sleep"      "Unspecified"     "sz_foc_ia_m_hyperkinetic"         60         NaN    "m"          NaN           17.672        13.605            0.45528     
+    "sub-108"        20.764              2             0.096321         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_ua_nm"                     60         NaN    "f"          NaN           21.593        12.834             2.5167     
+    "sub-111"        12.851              2              0.15563         true      true      true      true      "Mixed"      "Unspecified"     "sz_foc_a_nm"                      60         NaN    "f"          NaN           12.864        6.1777                0.1     
+    "sub-113"        3.7889             10               2.6393         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_a_um"                      60         NaN    "f"          NaN           8.8111        6.6501             2.0455     
+    "sub-117"        5.7917             11               1.8993         true      true      true      true      "Sleep"      "Unspecified"     "sz_foc_a_nm"                      60         NaN    "m"          NaN           20.476         6.121             1.7338     
+    "sub-119"        5.8169             14               2.4068         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_ia_nm"                     60         NaN    "f"          NaN           17.446        9.0341             1.5073     
+    "sub-013"        19.274              2              0.10376         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_ia_nm"                     55         NaN    "m"          NaN           12.296        8.4649             2.1655     
+    "sub-020"        19.954              1             0.050114         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_ia_nm"                     55         NaN    "f"          NaN           12.329        8.1348             1.4943     
+    "sub-027"        19.788              1             0.050536         true      true      true      true      "Sleep"      "Unspecified"     "sz_foc_f2b"                       55         NaN    "f"          NaN           22.595        9.6381             2.0698     
+    "sub-050"        13.076              3              0.22943         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_ia_m_hyperkinetic"         55         NaN    "f"          NaN           21.278        5.8939             1.3884     
+    "sub-052"        9.0092              9              0.99898         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_a_nm"                      55         NaN    "f"          NaN           17.545        7.3458             1.1164     
+    "sub-059"        9.2036              8              0.86922         true      true      true      true      "Sleep"      "Unspecified"     "sz_foc_ua_m_hyperkinetic"         55         NaN    "f"          NaN           12.826        7.9814            0.92233     
+    "sub-077"        5.9811              9               1.5047         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_a_nm"                      55         NaN    "m"          NaN           14.287        6.9019             1.6323     
+    "sub-080"        5.8217              8               1.3742         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_ia_m_automatisms"          55         NaN    "f"          NaN           20.915        7.2018             2.5344     
+    "sub-104"        19.436              2               0.1029         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_ia_m_automatisms"          55         NaN    "m"          NaN           11.766        12.026             2.7706     
+    "sub-114"        10.717              4              0.37325         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_a_um"                      55         NaN    "m"          NaN           10.846        7.8615             0.9057     
+    "sub-120"       0.98917             10                10.11         true      true      true      false     "Wake"       "Unspecified"     "sz_foc_ia"                        55         NaN    "f"          NaN           13.638        7.9696            0.76579     
+    "sub-003"        17.893              1             0.055888         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_ia_m_hyperkinetic"         50         NaN    "m"          NaN            9.939        12.504             1.0515     
+    "sub-005"        17.022              2               0.1175         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_a_nm"                      50         NaN    "f"          NaN           22.719        9.0246             1.4622     
+    "sub-043"        3.3931              5               1.4736         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_ia"                        50         NaN    "f"          NaN           16.718        6.3132             1.0854     
+    "sub-070"        5.8153              2              0.34392         true      true      true      true      "Mixed"      "Unspecified"     "sz_foc_f2b"                       50         NaN    "m"          NaN           17.171        7.1366             1.9451     
+    "sub-071"        1.8972              6               3.1625         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_ia"                        50         NaN    "m"          NaN           13.568        6.4765             1.1792     
+    "sub-089"       0.90278              5               5.5385         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_ia_m_hyperkinetic"         50         NaN    "m"          NaN           17.582        6.0067             1.4375     
+    "sub-107"        1.9144              2               1.0447         true      true      true      true      "Mixed"      "Unspecified"     "sz_foc_ia_m_automatisms"          50         NaN    "m"          NaN           17.323        6.3206             1.2645     
+    "sub-026"       0.76583              4               5.2231         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_ia_m_automatisms"          45         NaN    "m"          NaN           6.6201        5.4154            0.93641     
+    "sub-040"          5.76              3              0.52083         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_ia_m_tonic"                45         NaN    "m"          NaN           13.324        7.4966             2.5892     
+    "sub-049"         11.21              1             0.089206         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_f2b"                       45         NaN    "m"          NaN           14.273         6.339             1.3379     
+    "sub-058"        10.169              1             0.098339         true      true      true      true      "Sleep"      "Unspecified"     "sz_foc_f2b"                       45         NaN    "f"          NaN           15.113        6.7077             2.1624     
+    "sub-062"        9.9283              3              0.30217         true      true      true      true      "Sleep"      "Unspecified"     "sz_foc_ua_nm"                     45         NaN    "f"          NaN           23.855        6.0056              1.764     
+    "sub-064"        9.5086              3               0.3155         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_a_nm"                      45         NaN    "f"          NaN           24.039        5.5307            0.96563     
+    "sub-066"       0.58194              4               6.8735         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_ia_m_automatisms"          45         NaN    "m"          NaN           22.208        7.0686             2.3572     
+    "sub-076"       0.54028              3               5.5527         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_ia_nm"                     45         NaN    "f"          NaN           22.179         8.078             2.3702     
+    "sub-084"       0.98806              4               4.0484         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_ia_m_automatisms"          45         NaN    "f"          NaN           21.134        5.6798             1.4122     
+    "sub-085"       0.24694              3               12.148         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_ia_m_automatisms"          45         NaN    "m"          NaN           14.862         8.993             2.1726     
+    "sub-086"       0.98778              4               4.0495         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_ia_m_tonic"                45         NaN    "m"          NaN           14.626        5.4627             1.8773     
+    "sub-122"       0.98833              4               4.0472         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_ia_m_automatisms"          45         NaN    "m"          NaN           22.146        7.8913             1.4902     
+    "sub-082"       0.73194              4               5.4649         true      true      true      false     "Sleep"      "Unspecified"     "sz_foc_ua_um"                     40         NaN    "m"          NaN           15.328        6.5314             2.2148     
+    "sub-087"       0.95778             42               43.852         true      true      true      false     "Unknown"    "Unspecified"     "sz_foc_a_nm_behavior"             40         NaN    "f"          NaN           18.732        4.9371            0.88194     
+    "sub-090"        1.1828              4               3.3819         true      true      true      false     "Wake"       "Unspecified"     "sz_foc_a_nm_behavior"             40         NaN    "m"          NaN            19.35        6.5752             3.1421     
+    "sub-121"       0.97583              4               4.0991         true      true      true      false     "Wake"       "Unspecified"     "sz_foc_f2b"                       40         NaN    "m"          NaN           13.746        7.8986             1.5692     
+    "sub-006"        7.2664              1              0.13762         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_ia_m_automatisms"          35         NaN    "m"          NaN           10.259        7.4727             1.1582     
+    "sub-008"        2.9333              2              0.68182         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_ia_m_tonic"                35         NaN    "m"          NaN           14.036        5.2164             1.4374     
+    "sub-010"        4.5539              1              0.21959         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_ia_nm"                     35         NaN    "m"          NaN           13.447        7.7646             1.0849     
+    "sub-017"        6.1186              1              0.16344         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_f2b"                       35         NaN    "m"          NaN           16.292        4.8945             2.6438     
+    "sub-032"        9.2719              1              0.10785         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_f2b"                       35         NaN    "f"          NaN           15.424        6.7435             1.9537     
+    "sub-033"        7.4664              1              0.13393         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_ia_m_hyperkinetic"         35         NaN    "f"          NaN           9.2551        6.8836            0.17155     
+    "sub-053"         7.375              2              0.27119         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_a_m_hyperkinetic"          35         NaN    "m"          NaN           19.628        5.4433             1.9693     
+    "sub-054"        8.9292              1              0.11199         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_f2b"                       35         NaN    "f"          NaN           17.343        5.7522             1.5885     
+    "sub-057"        4.8006              1              0.20831         true      true      true      true      "Sleep"      "Unspecified"     "sz_foc_ia_m_hyperkinetic"         35         NaN    "f"          NaN           10.429        6.2653             1.5262     
+    "sub-061"        9.0486              1              0.11051         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_ia_um"                     35         NaN    "f"          NaN            22.35        5.8348             1.9611     
+    "sub-065"        4.1336              2              0.48384         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_ia"                        35         NaN    "f"          NaN           13.906        8.3913             2.1506     
+    "sub-069"        5.8183              1              0.17187         true      true      true      true      "Sleep"      "Unspecified"     "sz_foc_f2b"                       35         NaN    "m"          NaN           17.693         4.532            0.16689     
+    "sub-075"        5.9897              2              0.33391         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_a_um"                      35         NaN    "f"          NaN           14.464         7.648             1.8594     
+    "sub-078"        2.2247              1              0.44949         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_f2b"                       35         NaN    "f"          NaN            11.08        6.6842            0.40682     
+    "sub-083"       0.98806              1               1.0121         true      true      true      true      "Sleep"      "Unspecified"     "sz_foc_f2b"                       35         NaN    "m"          NaN           18.164        7.0968             1.1266     
+    "sub-092"       0.97972              6               6.1242         true      true      true      true      "Unknown"    "Unspecified"     "sz_foc_ia_m_hyperkinetic"         35         NaN    "m"          NaN           18.577        8.1633             1.7603     
+    "sub-106"        5.1325              2              0.38967         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_ia_m_automatisms"          35         NaN    "m"          NaN           12.619        5.8117             1.7396     
+    "sub-110"        5.1181              2              0.39077         true      true      true      true      "Sleep"      "Unspecified"     "sz_foc_f2b"                       35         NaN    "f"          NaN           15.114        7.2274            0.87247     
+    "sub-118"        5.8328              2              0.34289         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_ia_m_automatisms"          35         NaN    "m"          NaN           6.7805        5.5587            0.34059     
+    "sub-123"       0.98417              2               2.0322         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_ia_m_automatisms"          35         NaN    "m"          NaN           11.163        6.8623            0.14513     
+    "sub-124"       0.81889              1               1.2212         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_f2b"                       35         NaN    "m"          NaN            10.89          7.11            0.78353     
+    "sub-125"       0.98389              2               2.0327         true      true      true      true      "Wake"       "Unspecified"     "sz_foc_f2b"                       35         NaN    "m"          NaN            13.73        6.8746            0.75122     
+    "sub-048"        9.4422              1              0.10591         true      true      true      false     "Sleep"      "Unspecified"     "sz_foc_a_um"                      30         NaN    "m"          NaN            11.22        4.8397             2.2923     
+    "sub-067"        6.2142              4              0.64369         true      true      true      true      "Unknown"    "Unspecified"     "sz_foc_ia_m_hyperkinetic"         30         NaN    "f"          NaN           5.2411        6.6694             2.5777     
+    "sub-068"        6.3169              3              0.47491         true      true      true      true      "Unknown"    "Unspecified"     "sz_foc_f2b"                       30         NaN    "m"          NaN            15.68        5.1988            0.85023     
+    "sub-091"       0.21611              5               23.136         true      true      true      false     "Unknown"    "Unspecified"     "sz_foc_ia_um"                     30         NaN    "f"          NaN           18.582        5.1654             1.2906     
+    "sub-094"       0.46194              3               6.4943         true      true      true      true      "Unknown"    "Unspecified"     "sz_foc_ia_m_automatisms"          30         NaN    "f"          NaN            12.57        6.4665             1.9371     
+    "sub-081"       0.93417              4               4.2819         true      true      true      false     "Unknown"    "Unspecified"     "sz_foc_ia"                        25         NaN    "m"          NaN           13.778        4.1912             3.2646     
+    "sub-031"        2.7494              0                    0         true      true      true      true      ""           ""                "Error"                            20         NaN    "m"          NaN           17.029        6.7581              2.339     
+    "sub-088"       0.97889              1               1.0216         true      true      true      true      "Unknown"    "Unspecified"     "sz_foc_ia_m_hyperkinetic"         20         NaN    "m"          NaN           17.792        7.6216             1.8346     
+    "sub-093"       0.98528              1               1.0149         true      true      true      true      "Unknown"    "Unspecified"     "sz_foc_f2b"                       20         NaN    "f"          NaN           19.335         7.399             1.7492     
+    "sub-095"       0.98306              1               1.0172         true      true      true      true      "Unknown"    "Unspecified"     "sz_foc_ia"                        20         NaN    "m"          NaN           9.6234         6.568             1.7326     
+    "sub-096"       0.97694              1               1.0236         true      true      true      true      "Unknown"    "Unspecified"     "sz_foc_f2b"                       20         NaN    "f"          NaN           9.7801        6.2893                0.1     
+

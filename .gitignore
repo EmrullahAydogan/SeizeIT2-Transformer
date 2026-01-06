@@ -1,0 +1,45 @@
+# MATLAB files
+*.asv
+*.autosave
+*.m~
+
+# Large data files (EEG/ECG/EMG data)
+Data/RawData/*.mat
+Data/RawData/*.edf
+Data/ProcessedData/*.mat
+Data/ModelData/Train/*.mat
+Data/ModelData/Validation/*.mat
+Data/ModelData/Test/*.mat
+
+# Trained models (too large for GitHub)
+Data/ModelData/Models/*.mat
+
+# Log files
+*.log
+nohup.out
+
+# Results and checkpoints
+Results/BayesianOpt_AutoTrain/
+*.png
+*.jpg
+*.jpeg
+
+# Temporary files
+*.tmp
+*~
+.DS_Store
+
+# MATLAB cache
+*.mex*
+slprj/
+*.slxc
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Backup files
+*_backup*
+*_old*
+*.bak

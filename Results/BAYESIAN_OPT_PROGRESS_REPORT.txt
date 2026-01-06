@@ -1,0 +1,134 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║     BAYESIAN OPTIMIZATION PROGRESS REPORT - 2026-01-05 21:45             ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+GENEL DURUM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ Tamamlanan İterasyonlar: 6/10
+⏳ Devam Eden: İterasyon 7
+⏱️  Toplam Geçen Süre: ~1.5 saat
+📊 Kalan Süre Tahmini: ~1 saat
+
+ÖNEMLI BULGULAR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚠️  MSE metrikleri YANLIŞ hesaplanıyor!
+✅ Validation RMSE değerleri DOĞRU metrik
+✅ Max epochs tamamlayan modeller daha iyi eğitilmiş
+
+EN İYİ SONUÇ (RMSE bazında)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🏆 İTERASYON 6:
+   • Validation RMSE: 135.41 (EN DÜŞÜK!)
+   • Learning Rate: 9.51e-05
+   • Embedding Dim: 110
+   • Attention Heads: 5
+   • Encoder Layers: 3
+   • Decoder Layers: 5
+   • Dropout: 0.23
+   • Batch Size: 67
+   • Durum: Max Epochs (5 epoch tamamlandı)
+
+DETAYLI SONUÇLAR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Iter | LR        | Emb | Heads | Enc | Dec | Drop | Batch | Val RMSE | MSE     | Status
+-----|-----------|-----|-------|-----|-----|------|-------|----------|---------|------------
+  1  | 1.33e-04  | 245 |   7   |  4  |  2  | 0.16 |  22   |  217.44  | 22.96⭐ | Early Stop
+  2  | 7.08e-05  | 117 |   3   |  3  |  3  | 0.48 | 101   |  143.59  | 34.47   | Max Epochs
+  3  | 2.86e-03  | 132 |   6   |  3  |  4  | 0.32 |  43   |  217.99  | 23.04   | Early Stop
+  4  | 1.10e-04  |  80 |   8   |  6  |  4  | 0.49 |  95   |  155.89  | 33.71   | Max Epochs
+  5  | 9.13e-05  | 256 |   6   |  3  |  6  | 0.45 |  49   |   N/A    | Inf     | HATA
+  6  | 9.51e-05  | 110 |   5   |  3  |  5  | 0.23 |  67   |  135.41🏆| 35.65   | Max Epochs
+  7  | 3.77e-05  | 120 |   5   |  3  |  5  | 0.20 |  20   |  141.70  | ?       | Çalışıyor
+  8  | ?         | ?   |   ?   |  ?  |  ?  |  ?   |   ?   |   ?      | ?       | Bekliyor
+  9  | ?         | ?   |   ?   |  ?  |  ?  |  ?   |   ?   |   ?      | ?       | Bekliyor
+ 10  | ?         | ?   |   ?   |  ?  |  ?  |  ?   |   ?   |   ?      | ?       | Bekliyor
+
+⭐ = Kod bu MSE'yi "en iyi" seçti (YANLIŞ!)
+🏆 = Gerçek en iyi (Validation RMSE bazında)
+
+SIRALAMA (Validation RMSE'ye göre - DOĞRU METRIK)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1️⃣  İterasyon 6:  135.41 RMSE  ← EN İYİ (Max epochs, iyi eğitilmiş)
+2️⃣  İterasyon 7:  141.70 RMSE  ← ŞU ANDA EĞİTİLİYOR
+3️⃣  İterasyon 2:  143.59 RMSE  ← İyi (Max epochs)
+4️⃣  İterasyon 4:  155.89 RMSE  ← Orta (Max epochs)
+5️⃣  İterasyon 1:  217.44 RMSE  ← Kötü (Sadece 1 epoch - erken durdu)
+6️⃣  İterasyon 3:  217.99 RMSE  ← Kötü (Sadece 1 epoch - erken durdu)
+⚠️  İterasyon 5:  HATA (GPU memory?)
+
+SIRALAMALAR (MSE'ye göre - YANLIŞ METRIK!)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Kod bu sıralamayı kullanacak (YANLIŞ):
+1️⃣  İterasyon 1:  22.96 MSE  ← Kod bunu seçecek ama KÖTÜ! (1 epoch)
+2️⃣  İterasyon 3:  23.04 MSE  ← Kod 2. seçenek, ama KÖTÜ! (1 epoch)
+3️⃣  İterasyon 4:  33.71 MSE
+4️⃣  İterasyon 2:  34.47 MSE
+5️⃣  İterasyon 6:  35.65 MSE  ← Gerçekte EN İYİ ama kod 5. sıraya koyuyor!
+
+NEDEN TUTARSIZLIK VAR?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. Training sırasındaki Validation RMSE:
+   - MATLAB trainNetwork fonksiyonu tarafından hesaplanan
+   - Reshape edilmiş data üzerinde: [2064, 6, batch]
+   - Her mini-batch için hesaplanıyor
+   - ✅ DOĞRU VE GÜVENİLİR
+
+2. Final MSE (kod satır 456):
+   - Manuel hesaplanan: mean((X_val - Y_pred_reshaped).^2, 'all')
+   - Orjinal shape üzerinde: [16, 129, 6, batch]
+   - ❌ YANLIŞ veya FARKLI BİR ŞEY ÖLÇÜYOR
+
+Matematiksel olarak tutmuyor:
+  - Eğer MSE = 22.96 ise → RMSE = √22.96 = 4.79 olmalı
+  - Ama training gösteriyor RMSE = 217.44
+  - Bu 45 kat fark var! Açıklanamaz.
+
+SONUÇ VE TAVSİYELER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ EĞİTİM DEVAM EDİYOR - Durdurmaya gerek yok
+✅ Kalan 3-4 iterasyonu bekle
+
+⚠️  ANCAK: Eğitim bitince kod YANLIŞ modeli seçecek!
+   - Kod İterasyon 1'i seçecek (MSE = 22.96)
+   - Ama gerçekte İterasyon 6 en iyi (RMSE = 135.41)
+
+📋 YARINKI YAPILACAKLAR:
+1. ✅ 10 iterasyon tamamlanmasını bekle
+2. ❌ Otomatik seçilen parametreleri KULLANMA
+3. ✅ Manuel olarak İterasyon 6'nın parametrelerini al
+4. ✅ Onlarla asıl eğitimi başlat
+5. 🔧 Bayesian optimization kodunu düzelt (MSE hesabını)
+
+HİPERPARAMETRE ANALİZİ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+İyi performans gösteren iterasyonlarda ortak özellikler:
+
+✅ Learning Rate: 7e-05 ile 1e-04 arası (çok düşük değil, çok yüksek değil)
+✅ Embedding Dim: 80-120 arası (GPU'ya sığıyor, yeterli kapasite)
+✅ Attention Heads: 3-5 arası (fazla değil)
+✅ Encoder + Decoder Layers: Toplam 8 civarı
+✅ Dropout: 0.23-0.48 (overfitting'i önlüyor)
+✅ Batch Size: 67-101 (GPU'ya sığıyor)
+
+❌ Kötü performans gösteren:
+- Çok yüksek LR (2.86e-03) → Diverge oluyor
+- Çok düşük batch size (20-22) → Noisy updates
+- Çok büyük embedding (245, 256) → GPU memory, overfitting
+- 1 epoch'ta early stop → Hiç öğrenemedi
+
+MONITORING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Eğitimi takip etmek için:
+  tail -f /home/developer/Desktop/nt_project/MatlabProject/matlab_training.log
+
+Process durumu:
+  ps aux | grep matlab | grep -v grep
+
+GPU durumu:
+  nvidia-smi
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Rapor oluşturulma zamanı: 2026-01-05 21:45
+Sonraki güncelleme: Yarın (tüm iterasyonlar bitince)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

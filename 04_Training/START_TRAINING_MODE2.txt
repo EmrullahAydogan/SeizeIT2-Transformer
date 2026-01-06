@@ -1,0 +1,259 @@
+╔════════════════════════════════════════════════════════════════╗
+║     MODE 2: BAYESIAN OPTIMIZATION + TRAINING QUICK START      ║
+╚════════════════════════════════════════════════════════════════╝
+
+📋 WHAT YOU GET:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✓ Bayesian optimization (finds best hyperparameters)
+✓ Training with optimal parameters
+✓ Real-time progress monitoring
+✓ Epoch-wise metrics logging
+✓ Training summaries (even if early stopped)
+✓ Automatic recovery on interruption
+
+⏱️ ESTIMATED TIME:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Step 1: Bayesian Optimization    ~1-2 hours
+Step 2: Training with best params ~2-3 hours
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TOTAL:                            ~4-5 hours
+
+🚀 STEP 1: OPEN TWO TERMINALS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TERMINAL 1: Training (MATLAB)
+────────────────────────────────────────────────────────────────
+cd /home/developer/Desktop/nt_project/MatlabProject
+matlab
+
+Then in MATLAB:
+>> addpath('config')
+>> addpath('utils')
+>> addpath('03_Models')
+>> addpath('04_Training')
+>> [net, trainInfo] = train_model('UseBayesianOpt', true);
+
+
+TERMINAL 2: Monitoring (Bash)
+────────────────────────────────────────────────────────────────
+cd /home/developer/Desktop/nt_project/MatlabProject/04_Training
+./monitor_training.sh
+
+Or manually with tail:
+tail -f ../Results/training_log_*.txt
+
+
+🖥️ WHAT YOU'LL SEE:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PHASE 1: Bayesian Optimization (1-2 hours)
+───────────────────────────────────────────────────────────────
+=== TRANSFORMER AUTOENCODER TRAINING ===
+Configuration: SeizeIT2-Transformer v2.0.0
+
+========== BAYESIAN OPTIMIZATION ==========
+Running hyperparameter optimization...
+Iterations: 10
+This may take 1-2 hours...
+
+Iteration 1/10: Objective = 45.2341
+Iteration 2/10: Objective = 38.1234
+...
+Iteration 10/10: Objective = 22.9641
+
+========== OPTIMIZATION COMPLETE ==========
+Optimal hyperparameters found:
+  Learning Rate:      0.000530
+  Embedding Dim:      186
+  Attention Heads:    6
+  [... more parameters ...]
+
+
+PHASE 2: Training with Optimal Parameters (2-3 hours)
+───────────────────────────────────────────────────────────────
+[Monitoring] Log files created:
+  - Training log: Results/training_log_2026-01-05_XX-XX-XX.txt
+  - Metrics CSV: Results/training_metrics_2026-01-05_XX-XX-XX.csv
+[Monitoring] You can monitor progress with: tail -f Results/training_log_...
+
+Loading training data...
+Input shape: 16 channels x 1000 timesteps
+Splitting data for validation...
+  Train files: XX (80.0%)
+  Validation files: YY (20.0%)
+
+Building Transformer-Autoencoder architecture...
+Configuring training...
+  Early stopping: ENABLED (patience=10 epochs)
+  Learning rate schedule: piecewise
+
+========== TRAINING STARTED ==========
+
+[Epoch 1] Iter: 1000 | Train Loss: 2.5432 | Val Loss: 2.6123 | Time: 120.5s
+[Early Stopping] ✓ Improvement! Val loss: 2.6123 (↓ 0.5432)
+
+[Epoch 2] Iter: 2000 | Train Loss: 2.1234 | Val Loss: 2.2456 | Time: 245.1s
+[Early Stopping] ✓ Improvement! Val loss: 2.2456 (↓ 0.3667)
+
+[Epoch 3] Iter: 3000 | Train Loss: 1.9876 | Val Loss: 2.2789 | Time: 368.7s
+[Early Stopping] ⚠ No improvement: 1/10 epochs (current: 2.2789, best: 2.2456)
+
+... [training continues] ...
+
+If training completes all 50 epochs:
+────────────────────────────────────────
+========== TRAINING COMPLETED ==========
+Total time: 125.34 minutes
+Final training loss: 1.2345
+Final validation loss: 1.3456
+Best validation loss: 1.2987
+
+Model saved:
+  - Trained_Transformer_BayesOpt_2026-01-05_XX-XX-XX.mat
+  - Trained_Transformer_Latest.mat
+  - Training curve: Training_Curve_2026-01-05_XX-XX-XX.png
+
+[Summary] Training summary saved: training_summary_2026-01-05_XX-XX-XX.txt
+
+
+If early stopping triggers:
+────────────────────────────────────────
+[Epoch 25] Iter: 25000 | Train Loss: 1.2456 | Val Loss: 1.3234 | Time: 3125.2s
+[Early Stopping] ⚠ No improvement: 10/10 epochs (current: 1.3234, best: 1.2987)
+
+[Early Stopping] 🛑 STOPPING - No improvement for 10 epochs!
+Best validation loss: 1.2987
+
+==========================================================
+TRAINING STOPPED BY EARLY STOPPING
+Total Time: 52.09 minutes
+Final Epoch: 25
+Best Validation Loss: 1.2987
+==========================================================
+
+[Model still saved with best weights!]
+
+
+📁 OUTPUT FILES:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Results/
+├── BayesianOpt_AutoTrain/
+│   └── optimization_results.mat          ← Optimization history
+│
+├── training_log_2026-01-05_XX-XX-XX.txt  ← Real-time log (tail -f this!)
+├── training_metrics_2026-01-05_XX-XX-XX.csv ← Excel-friendly metrics
+├── training_summary_2026-01-05_XX-XX-XX.txt ← Final summary
+│
+├── Figures/
+│   └── Training_Curve_2026-01-05_XX-XX-XX.png ← Loss curves
+│
+└── Checkpoints/
+    └── net_checkpoint__XXXXX__2026_01_05__XX_XX_XX.mat
+
+Data/ModelData/Models/
+├── Trained_Transformer_BayesOpt_2026-01-05_XX-XX-XX.mat ← Final model
+└── Trained_Transformer_Latest.mat                        ← Same (latest)
+
+
+📊 HOW TO ACCESS RESULTS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. DURING TRAINING (Real-time):
+   ────────────────────────────────────────────────────────────
+   Terminal: tail -f Results/training_log_*.txt
+   Excel: Open Results/training_metrics_*.csv
+   MATLAB: plot(readtable('Results/training_metrics_*.csv'))
+
+
+2. AFTER TRAINING (Complete or Early Stopped):
+   ────────────────────────────────────────────────────────────
+   Read summary:
+   >> type Results/training_summary_*.txt
+
+   Load model:
+   >> load('Data/ModelData/Models/Trained_Transformer_Latest.mat')
+   >> whos
+
+   Check if early stopped:
+   >> load('Data/ModelData/Models/Trained_Transformer_Latest.mat')
+   >> if isfield(training_metadata, 'training_interrupted')
+   >>     disp('Training was interrupted/early stopped')
+   >> end
+
+   Plot training curves:
+   >> figure; plot(trainInfo.TrainingLoss);
+   >> hold on; plot(trainInfo.ValidationLoss);
+   >> legend('Training', 'Validation');
+
+
+3. VIEW METRICS IN EXCEL/PYTHON:
+   ────────────────────────────────────────────────────────────
+   # Python
+   import pandas as pd
+   df = pd.read_csv('Results/training_metrics_*.csv')
+   df.plot(x='Epoch', y=['TrainingLoss', 'ValidationLoss'])
+
+   # Excel
+   Open Results/training_metrics_*.csv in Excel
+   Create chart from columns
+
+
+⚠️ IMPORTANT NOTES:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. DON'T CLOSE TERMINAL 1 (MATLAB)
+   - Training will stop if you close it
+   - If accidentally closed, partial results are saved
+
+2. GPU MEMORY
+   - Monitor with: nvidia-smi
+   - Should use ~6-7 GB out of 8 GB
+
+3. PAUSE/RESUME
+   - Ctrl+C in MATLAB will interrupt training
+   - Partial model will be saved
+   - Can resume from checkpoint (manual process)
+
+4. EARLY STOPPING
+   - Automatically saves best model (lowest validation loss)
+   - Summary file will indicate early stopping
+   - This is NORMAL and EXPECTED for good generalization
+
+
+🔧 TROUBLESHOOTING:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Problem: "Out of memory" error
+Solution: Reduce batch size in config.m:
+  cfg.train.min_batch_size = 16; % or even 8
+
+Problem: Training too slow
+Solution: Reduce iterations:
+  train_model('UseBayesianOpt', true, 'BayesOptIterations', 5)
+
+Problem: Can't find log file
+Solution: List recent logs:
+  ls -lht Results/training_log_*.txt
+
+Problem: Want to stop and resume later
+Solution: Ctrl+C in MATLAB, then later:
+  - Check Results/Checkpoints/ for latest checkpoint
+  - Load and continue manually (advanced)
+
+
+✅ READY TO START?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TERMINAL 1 (MATLAB):
+cd /home/developer/Desktop/nt_project/MatlabProject
+matlab -nodisplay -nosplash
+
+>> addpath('config'); addpath('utils'); addpath('03_Models'); addpath('04_Training');
+>> [net, trainInfo] = train_model('UseBayesianOpt', true);
+
+TERMINAL 2 (Monitor):
+cd /home/developer/Desktop/nt_project/MatlabProject/04_Training
+./monitor_training.sh
+
+Press ENTER when ready!

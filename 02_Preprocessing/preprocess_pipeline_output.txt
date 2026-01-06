@@ -1,0 +1,171 @@
+===============================================
+SEIZEIT2 - PREPROCESSING PIPELINE (Academic Version)
+===============================================
+Configuration loaded successfully.
+Project: SeizeIT2-Transformer v2.0.0
+Base path: /home/developer/Desktop/nt_project/MatlabProject
+Configuration loaded: SeizeIT2-Transformer v2.0.0
+Selected patients: sub-039, sub-015, sub-022
+Random seed set to: 42
+Reproducibility log saved: /home/developer/Desktop/nt_project/MatlabProject/Data/Processed/reproducibility_preprocess.json
+
+--- PARAMETER VALIDATION ---
+Window size: 4.0 seconds (1000 samples)
+Stride: 2.0 seconds (500 samples)
+Overlap: 50.0%
+
+--- PATIENT PROCESSING ---
+Processing 3 patients...
+
+===============================================
+PATIENT 1/3: sub-039
+===============================================
+[1/4] Raw data processing...
+   Reading /home/developer/Desktop/SeizeIT2/dataset/sub-039/ses-01/eeg/sub-039_ses-01_task-szMonitoring_run-01_eeg.edf... [2 channels, 20.6 hours]
+   Reading /home/developer/Desktop/SeizeIT2/dataset/sub-039/ses-01/ecg/sub-039_ses-01_task-szMonitoring_run-01_ecg.edf... [1 channels, 20.6 hours]
+   Reading /home/developer/Desktop/SeizeIT2/dataset/sub-039/ses-01/emg/sub-039_ses-01_task-szMonitoring_run-01_emg.edf... [1 channels, 20.6 hours]
+   Reading /home/developer/Desktop/SeizeIT2/dataset/sub-039/ses-01/mov/sub-039_ses-01_task-szMonitoring_run-01_mov.edf... [12 channels, 20.6 hours]
+   > Synchronizing signals... [16 channels, 20.6 hours]
+[2/4] Seizure labeling...
+   > Labeling 12 seizures... [0.2% seizure samples]
+[3/4] Data quality assessment...
+   > SNR: 12.1 ± 9.7 dB
+   > Artifacts: 7.7% ± 7.1%
+   > Missing data: 0.0%
+[4/4] Window creation for transformer autoencoder...
+   > Normalizing (zscore)... [Done]
+   > Creating 37035 windows (41.1 hours)... [Done]
+   > Seizure windows: 75 (0.2%)
+   > Transformer-specific preprocessing...
+     Adding positional encoding... Positional encoding added (seq length: 1000, channels: 16)[Done]
+     Applying data augmentation... Data augmentation applied: 75 seizure windows -> 450 total (6.0x)
+[Done]
+     Converting to spectrogram... Converted to spectrogram (16 channels, 129 freq bins)[Done]
+   > Transformer preprocessing complete.
+   > Train/Test split...
+     450 seizure windows -> TEST
+     Normal windows: 29568 Train, 7392 Test
+
+   PATIENT SUMMARY:
+   - Duration: 20.6 hours
+   - Channels: 16
+   - Total windows: 37410
+   - Seizure windows: 450 (1.2%)
+   - Train windows: 29568
+   - Test windows: 7842
+   - Processing time: 205.2 seconds
+
+===============================================
+PATIENT 2/3: sub-015
+===============================================
+[1/4] Raw data processing...
+   Reading /home/developer/Desktop/SeizeIT2/dataset/sub-015/ses-01/eeg/sub-015_ses-01_task-szMonitoring_run-01_eeg.edf... [2 channels, 20.9 hours]
+   Reading /home/developer/Desktop/SeizeIT2/dataset/sub-015/ses-01/ecg/sub-015_ses-01_task-szMonitoring_run-01_ecg.edf... [1 channels, 20.9 hours]
+   Reading /home/developer/Desktop/SeizeIT2/dataset/sub-015/ses-01/emg/sub-015_ses-01_task-szMonitoring_run-01_emg.edf... [1 channels, 20.9 hours]
+   Reading /home/developer/Desktop/SeizeIT2/dataset/sub-015/ses-01/mov/sub-015_ses-01_task-szMonitoring_run-01_mov.edf... [12 channels, 20.9 hours]
+   > Synchronizing signals... [16 channels, 20.9 hours]
+[2/4] Seizure labeling...
+   > Labeling 1 seizures... [0.0% seizure samples]
+[3/4] Data quality assessment...
+   > SNR: 23.3 ± 46.0 dB
+   > Artifacts: 11.4% ± 11.2%
+   > Missing data: 0.0%
+[4/4] Window creation for transformer autoencoder...
+   > Normalizing (zscore)... [Done]
+   > Creating 37603 windows (41.8 hours)... [Done]
+   > Seizure windows: 20 (0.1%)
+   > Transformer-specific preprocessing...
+     Adding positional encoding... Positional encoding added (seq length: 1000, channels: 16)[Done]
+     Applying data augmentation... Data augmentation applied: 20 seizure windows -> 120 total (6.0x)
+[Done]
+     Converting to spectrogram... Converted to spectrogram (16 channels, 129 freq bins)[Done]
+   > Transformer preprocessing complete.
+   > Train/Test split...
+     120 seizure windows -> TEST
+     Normal windows: 30067 Train, 7516 Test
+
+   PATIENT SUMMARY:
+   - Duration: 20.9 hours
+   - Channels: 16
+   - Total windows: 37703
+   - Seizure windows: 120 (0.3%)
+   - Train windows: 30067
+   - Test windows: 7636
+   - Processing time: 208.8 seconds
+
+===============================================
+PATIENT 3/3: sub-022
+===============================================
+[1/4] Raw data processing...
+   Reading /home/developer/Desktop/SeizeIT2/dataset/sub-022/ses-01/eeg/sub-022_ses-01_task-szMonitoring_run-01_eeg.edf... [2 channels, 21.5 hours]
+   Reading /home/developer/Desktop/SeizeIT2/dataset/sub-022/ses-01/ecg/sub-022_ses-01_task-szMonitoring_run-01_ecg.edf... [1 channels, 21.5 hours]
+   Reading /home/developer/Desktop/SeizeIT2/dataset/sub-022/ses-01/emg/sub-022_ses-01_task-szMonitoring_run-01_emg.edf... [1 channels, 21.5 hours]
+   Reading /home/developer/Desktop/SeizeIT2/dataset/sub-022/ses-01/mov/sub-022_ses-01_task-szMonitoring_run-01_mov.edf... [12 channels, 21.5 hours]
+   > Synchronizing signals... [16 channels, 21.5 hours]
+[2/4] Seizure labeling...
+   > No seizures found (clean patient).
+[3/4] Data quality assessment...
+   > SNR: 38.6 ± 47.4 dB
+   > Artifacts: 15.2% ± 14.8%
+   > Missing data: 0.0%
+[4/4] Window creation for transformer autoencoder...
+   > Normalizing (zscore)... [Done]
+   > Creating 38646 windows (42.9 hours)... [Done]
+   > Seizure windows: 0 (0.0%)
+   > Transformer-specific preprocessing...
+     Adding positional encoding... Positional encoding added (seq length: 1000, channels: 16)[Done]
+     Applying data augmentation... No seizure windows to augment.
+[Done]
+     Converting to spectrogram... Converted to spectrogram (16 channels, 129 freq bins)[Done]
+   > Transformer preprocessing complete.
+   > Train/Test split...
+     All windows -> TRAIN (clean patient)
+
+   PATIENT SUMMARY:
+   - Duration: 21.5 hours
+   - Channels: 16
+   - Total windows: 38646
+   - Seizure windows: 0 (0.0%)
+   - Train windows: 38646
+   - Test windows: 0
+   - Processing time: 208.6 seconds
+
+===============================================
+PREPROCESSING PIPELINE COMPLETE
+===============================================
+
+--- OVERALL STATISTICS ---
+Patients processed: 3/3
+Total windows created: 113759
+  - Training windows: 98281 (86.4%)
+  - Test windows: 15478 (13.6%)
+  - Seizure windows: 570 (0.5%)
+  - Normal windows: 113189
+Class imbalance ratio (Normal:Seizure): 198.6:1
+
+Total processing time: 10.4 minutes
+
+--- QUALITY METRICS ---
+Quality metrics saved: /home/developer/Desktop/nt_project/MatlabProject/Data/Processed/preprocessing_quality_metrics.csv
+
+Quality Metrics Summary:
+  Average SNR: 24.7 ± 13.3 dB
+  Average artifact ratio: 11.4% ± 3.7%
+  Average missing data: 0.0% ± 0.0%
+
+--- GENERATING REPORT ---
+Pipeline report saved: /home/developer/Desktop/nt_project/MatlabProject/Data/Processed/preprocessing_pipeline_report.txt
+
+--- TRANSFORMER AUTOENCODER NOTES ---
+The preprocessed data is ready for transformer autoencoder training.
+Data format: [Channels x Time x 1 x Batch]
+Suggested preprocessing for transformer autoencoder:
+  1. Consider adding positional encoding to windows
+  2. Experiment with different window sizes (1-10 seconds)
+  3. Consider time-frequency representations (spectrograms)
+  4. Data augmentation: time warping, jitter, scaling
+  5. Channel-wise attention mechanisms
+
+===============================================
+PREPROCESSING PIPELINE COMPLETED SUCCESSFULLY
+===============================================
