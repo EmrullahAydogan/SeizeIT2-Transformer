@@ -138,19 +138,6 @@ SeizeIT2/
 - [ ] Attention weight visualization
 - [ ] Clinical validation study
 
-## 📚 Citation
-
-*Paper in preparation*
-
-```bibtex
-@misc{seizeit2_transformer2025,
-  title={Transformer-Based Anomaly Detection for Epileptic Seizure Identification: A Pilot Study},
-  author={[Your Name]},
-  year={2025},
-  note={Code available at: https://github.com/[username]/SeizeIT2-Transformer}
-}
-```
-
 ## 📄 License
 
 MIT License (or specify your preference)
